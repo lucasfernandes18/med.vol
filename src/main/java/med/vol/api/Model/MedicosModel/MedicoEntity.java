@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Entity
-@Table (name = "medico")
+@Table (name = "medicos")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -21,17 +21,20 @@ public class MedicoEntity {
     private String email;
     private Long telefone;
     private Long crm;
-    private Especialidades especialidades;
+
+    @Enumerated(EnumType.STRING) // Indica ao JPA que este campo é um enum e deve ser persistido como texto no banco,
+// evitando problemas caso a ordem dos valores do enum seja alterada.
+    private Especialidades especialidade;
 
     @Embedded // o jpa considera os campos dessa tabela atribuindo elas a essa entidade
     private EnderecoEntity endereco;
 
-    public MedicoEntity(MedicosModel dados) {
+    public MedicoEntity(MedicosDTO dados) {
         this.nome = dados.nome();
         this.email = dados.email();
         this.telefone = dados.telefone();
         this.crm = dados.crm();
-        this.especialidades = dados.especialidades();
+        this.especialidade = dados.especialidade();
         this.endereco = new EnderecoEntity(dados.endereco());
     }
 }
