@@ -16,7 +16,7 @@ public class EnderecoEntity {
 
     private String logradouro;
     private String bairro;
-    private Long cep;
+    private String cep;
     private String cidade;
     private String uf;
     private String complemento;

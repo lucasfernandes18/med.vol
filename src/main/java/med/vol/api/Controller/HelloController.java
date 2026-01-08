@@ -2,6 +2,7 @@ package med.vol.api.Controller;
 
 
 import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
 import med.vol.api.Model.MedicosModel.MedicoEntity;
 import med.vol.api.Model.MedicosModel.MedicosDTO;
 import med.vol.api.Repository.MedicoRepository;
@@ -17,7 +18,8 @@ private MedicoRepository medicoRepository;
 
     @PutMapping
     @Transactional //
-public void cadastrarMedicos(@RequestBody MedicosDTO dados){
+     //@Valid se conecta com o bean validation e solicita as verificações desse dto.
+public void cadastrarMedicos(@RequestBody @Valid  MedicosDTO dados){
        medicoRepository.save(new MedicoEntity(dados));
     }
 
