@@ -1,10 +1,10 @@
-package med.vol.api.Model.MedicosModel;
+package med.vol.api.Model.MedicosModel.PacientesModel;
 
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 
-public record EnderecoDTO(
+public record EnderecoPacientesDTO(
+
         @NotBlank
         String logradouro,
 
@@ -12,8 +12,8 @@ public record EnderecoDTO(
         String bairro,
 
         @NotBlank
-        @Pattern(regexp = "\\d{8}") //faz a verificação se foi digitado 8 digitos;
-        String cep,
+        @Pattern(regexp = "\\d{8}") //valida se o usuário digitou 8 números.
+        Long cep,
 
         @NotBlank
         String cidade,
@@ -25,6 +25,7 @@ public record EnderecoDTO(
         String complemento,
 
         @NotBlank
-        Integer numero
+        Number numero
+
 ) {
 }
