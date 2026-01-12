@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/medicos")
-public class HelloController {
+public class MedicosController {
 
     @Autowired
 private MedicoRepository medicoRepository;

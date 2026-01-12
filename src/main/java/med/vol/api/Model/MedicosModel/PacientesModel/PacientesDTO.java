@@ -3,6 +3,7 @@ package med.vol.api.Model.MedicosModel.PacientesModel;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 public record PacientesDTO(
 
@@ -13,7 +14,7 @@ public record PacientesDTO(
         @NotBlank
         String email,
 
-        @NotBlank
+        @NotNull
         Long telefone,
 
         @NotBlank
