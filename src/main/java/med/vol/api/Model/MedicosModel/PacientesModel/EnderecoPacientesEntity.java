@@ -20,7 +20,7 @@ public class EnderecoPacientesEntity {
     private String cidade;
     private String uf;
     private String complemento;
-    private Number numero;
+    private String numero;
 
     EnderecoPacientesEntity(EnderecoPacientesDTO dadosEndereco){
         this.logradouro = dadosEndereco.logradouro();

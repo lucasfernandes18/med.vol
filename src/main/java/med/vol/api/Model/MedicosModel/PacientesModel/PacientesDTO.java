@@ -17,7 +17,7 @@ public record PacientesDTO(
         @NotNull
         Long telefone,
 
-        @NotBlank
+        @NotNull
         @Valid
         EnderecoPacientesDTO endereco
 

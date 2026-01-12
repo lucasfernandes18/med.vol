@@ -26,7 +26,7 @@ public record EnderecoPacientesDTO(
         String complemento,
 
         @NotNull
-        Number numero
+        String numero
 
 ) {
 }
