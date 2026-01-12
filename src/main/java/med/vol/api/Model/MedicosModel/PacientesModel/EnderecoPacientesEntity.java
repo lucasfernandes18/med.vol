@@ -7,13 +7,12 @@ import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
-@Entity
-@Table (name = "endereco_pacientes")
+
 @Embeddable
 @Data
 @RequiredArgsConstructor
 
-public class EnderecoEntity {
+public class EnderecoPacientesEntity {
 
     private String logradouro;
     private String bairro;
@@ -23,7 +22,7 @@ public class EnderecoEntity {
     private String complemento;
     private Number numero;
 
-    EnderecoEntity (EnderecoPacientesDTO dadosEndereco){
+    EnderecoPacientesEntity(EnderecoPacientesDTO dadosEndereco){
         this.logradouro = dadosEndereco.logradouro();
         this.bairro = dadosEndereco.bairro();
         this.cep = dadosEndereco.cep();
