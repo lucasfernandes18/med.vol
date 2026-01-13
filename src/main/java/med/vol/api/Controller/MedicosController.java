@@ -4,10 +4,13 @@ package med.vol.api.Controller;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import med.vol.api.Model.MedicosModel.MedicoEntity;
+import med.vol.api.Model.MedicosModel.MedicoListagem;
 import med.vol.api.Model.MedicosModel.MedicosDTO;
 import med.vol.api.Repository.MedicoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/medicos")
@@ -23,6 +26,13 @@ public void cadastrarMedicos(@RequestBody @Valid  MedicosDTO dados){
        medicoRepository.save(new MedicoEntity(dados));
     }
 
+
+   //Pega apenas as informações especificadas no trelo usando um dto.
+    @GetMapping
+    public List<MedicoListagem> listarMedicos() {
+        return medicoRepository.findAll().stream().map(MedicoListagem::new).toList();
+    }
+    // Mapeia a lista de entidades Medico para DTOs MedicoListagem e retorna o resultado
 
 
 }
