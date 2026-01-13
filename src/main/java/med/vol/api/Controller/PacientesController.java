@@ -27,6 +27,7 @@ public class PacientesController {
         pacienteRepository.save (new PacientesEntity(dadosPacientes));
     }
 
+    @GetMapping
     public Page<InformacoesPacientes> listarPacientes(Pageable paginacao){
       return  pacienteRepository.findAll(paginacao).map(InformacoesPacientes::new);
     }
