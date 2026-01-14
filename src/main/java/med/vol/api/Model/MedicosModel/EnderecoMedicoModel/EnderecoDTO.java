@@ -1,6 +1,7 @@
 package med.vol.api.Model.MedicosModel.EnderecoMedicoModel;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 
 public record EnderecoDTO(
@@ -23,7 +24,7 @@ public record EnderecoDTO(
         @NotBlank
         String complemento,
 
-        @NotBlank
+        @NotNull
         Integer numero
 ) {
 }

@@ -16,6 +16,7 @@ import med.vol.api.Model.MedicosModel.EnderecoMedicoModel.EnderecoEntity;
 @ToString
 public class MedicoEntity {
 
+
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
@@ -23,6 +24,7 @@ public class MedicoEntity {
     private String email;
     private String telefone;
     private String crm;
+    private Boolean ativo;
 
     @Enumerated(EnumType.STRING) // Indica ao JPA que este campo é um enum e deve ser persistido como texto no banco,
 // evitando problemas caso a ordem dos valores do enum seja alterada.
@@ -32,6 +34,7 @@ public class MedicoEntity {
     private EnderecoEntity endereco;
 
     public MedicoEntity(MedicosDTO dados) {
+        this.ativo = true;
         this.nome = dados.nome();
         this.email = dados.email();
         this.telefone = dados.telefone();
@@ -51,4 +54,9 @@ public class MedicoEntity {
             this.endereco.atualizarInformacoes(atualizacao.endereco());
         }
     }
+
+    public void desativar( ){
+        this.ativo = false;
+    }
+
 }

@@ -33,7 +33,7 @@ public void cadastrarMedicos(@RequestBody @Valid  MedicosDTO dados){
    //Pega apenas as informações especificadas no trelo usando um dto.
     @GetMapping
     public Page<MedicoListagem> listarMedicos(Pageable paginacao) {
-        return medicoRepository.findAll(paginacao).map(MedicoListagem::new);
+        return medicoRepository.findAllByAtivoTrue(paginacao).map(MedicoListagem::new);
     }
     // Mapeia a lista de entidades Medico para DTOs MedicoListagem e retorna o resultado
     // Interface Page da o controle de quantos elementos são retornados e as informações de quantos existem no banco
@@ -45,8 +45,12 @@ public void cadastrarMedicos(@RequestBody @Valid  MedicosDTO dados){
      medico.atualizarInformacoes(atualizacao);
     }
 
-
-
+    @DeleteMapping("/{id}")
+    @Transactional
+    public void desativaredico(@PathVariable Long id){
+        var medico = medicoRepository.getReferenceById(id);
+        medico.desativar();
+    }
 
 
 
