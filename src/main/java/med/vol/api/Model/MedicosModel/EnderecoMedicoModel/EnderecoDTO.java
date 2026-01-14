@@ -1,7 +1,6 @@
-package med.vol.api.Model.MedicosModel;
+package med.vol.api.Model.MedicosModel.EnderecoMedicoModel;
 
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 
 public record EnderecoDTO(

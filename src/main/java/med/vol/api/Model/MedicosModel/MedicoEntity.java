@@ -1,10 +1,12 @@
 package med.vol.api.Model.MedicosModel;
 
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import med.vol.api.Model.MedicosModel.EnderecoMedicoModel.EnderecoEntity;
 
 @Entity
 @Table (name = "medicos")
@@ -36,5 +38,17 @@ public class MedicoEntity {
         this.crm = dados.crm();
         this.especialidade = dados.especialidade();
         this.endereco = new EnderecoEntity(dados.endereco());
+    }
+
+    public void atualizarInformacoes(@Valid DadosDeAtualizacaoMedico atualizacao) {
+        if (atualizacao.nome() != null){
+            this.nome = atualizacao.nome();
+        }
+        if (atualizacao.telefone() != null){
+            this.telefone = atualizacao.telefone();
+        }
+        if (atualizacao.endereco() != null){
+            this.endereco.atualizarInformacoes(atualizacao.endereco());
+        }
     }
 }

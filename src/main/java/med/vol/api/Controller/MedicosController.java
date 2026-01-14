@@ -3,6 +3,7 @@ package med.vol.api.Controller;
 
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
+import med.vol.api.Model.MedicosModel.DadosDeAtualizacaoMedico;
 import med.vol.api.Model.MedicosModel.MedicoEntity;
 import med.vol.api.Model.MedicosModel.MedicoListagem;
 import med.vol.api.Model.MedicosModel.MedicosDTO;
@@ -21,7 +22,7 @@ public class MedicosController {
     @Autowired
 private MedicoRepository medicoRepository;
 
-    @PutMapping
+    @PostMapping
     @Transactional //
      //@Valid se conecta com o bean validation e solicita as verificações desse dto.
 public void cadastrarMedicos(@RequestBody @Valid  MedicosDTO dados){
@@ -36,6 +37,18 @@ public void cadastrarMedicos(@RequestBody @Valid  MedicosDTO dados){
     }
     // Mapeia a lista de entidades Medico para DTOs MedicoListagem e retorna o resultado
     // Interface Page da o controle de quantos elementos são retornados e as informações de quantos existem no banco
+
+    @PutMapping
+    @Transactional
+    public void atualizarMedico(@RequestBody @Valid DadosDeAtualizacaoMedico atualizacao){
+     var medico = medicoRepository.getReferenceById(atualizacao.id());
+     medico.atualizarInformacoes(atualizacao);
+    }
+
+
+
+
+
 
 
 }
