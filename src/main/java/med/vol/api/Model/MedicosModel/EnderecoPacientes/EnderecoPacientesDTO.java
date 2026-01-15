@@ -1,4 +1,4 @@
-package med.vol.api.Model.MedicosModel.PacientesModel;
+package med.vol.api.Model.MedicosModel.EnderecoPacientes;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

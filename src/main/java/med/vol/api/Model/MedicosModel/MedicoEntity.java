@@ -26,7 +26,7 @@ public class MedicoEntity {
     private String crm;
     private Boolean ativo;
 
-    @Enumerated(EnumType.STRING) // Indica ao JPA que este campo é um enum e deve ser persistido como texto no banco,
+    @Enumerated(EnumType.STRING) // Mostra ao JPA que este campo é um enum e deve ser persistido como texto no banco,
 // evitando problemas caso a ordem dos valores do enum seja alterada.
     private Especialidades especialidade;
 
