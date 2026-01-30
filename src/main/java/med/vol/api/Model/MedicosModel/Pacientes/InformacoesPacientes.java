@@ -1,6 +1,4 @@
-package med.vol.api.Model.MedicosModel.PacientesModel;
-
-import med.vol.api.Model.MedicosModel.MedicoEntity;
+package med.vol.api.Model.MedicosModel.Pacientes;
 
 public record InformacoesPacientes(Long id, String nome,String email, Long telefone) {
 

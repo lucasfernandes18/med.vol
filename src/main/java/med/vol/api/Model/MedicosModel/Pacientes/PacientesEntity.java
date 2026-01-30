@@ -1,12 +1,10 @@
-package med.vol.api.Model.MedicosModel.PacientesModel;
+package med.vol.api.Model.MedicosModel.Pacientes;
 
 
 import jakarta.persistence.*;
 import jakarta.validation.Valid;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
-import med.vol.api.Model.MedicosModel.EnderecoMedicoModel.EnderecoEntity;
-import med.vol.api.Model.MedicosModel.EnderecoPacientes.EnderecoPacientesDTO;
 import med.vol.api.Model.MedicosModel.EnderecoPacientes.EnderecoPacientesEntity;
 
 @Entity
@@ -33,6 +31,8 @@ public class PacientesEntity {
         this.atividade = true;
         this.endereco = new EnderecoPacientesEntity(dadosPacientes.endereco());
     }
+
+    
 
     public void informacoesDeAtualizacao(@Valid DadosDeAtualizacaoPacientes atualizacaoPacientes) {
        if (atualizacaoPacientes.nome() != null){

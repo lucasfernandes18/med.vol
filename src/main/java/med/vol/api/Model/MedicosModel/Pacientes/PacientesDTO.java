@@ -1,4 +1,4 @@
-package med.vol.api.Model.MedicosModel.PacientesModel;
+package med.vol.api.Model.MedicosModel.Pacientes;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;

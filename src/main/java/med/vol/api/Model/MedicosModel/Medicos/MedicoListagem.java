@@ -1,4 +1,4 @@
-package med.vol.api.Model.MedicosModel;
+package med.vol.api.Model.MedicosModel.Medicos;
 
 public record MedicoListagem(Long id, String nome, String email, String crm, Especialidades especialidades) {
 

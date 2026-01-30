@@ -1,4 +1,4 @@
-package med.vol.api.Model.MedicosModel.EnderecoMedicoModel;
+package med.vol.api.Model.MedicosModel.EnderecoMedico;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -26,5 +26,20 @@ public record EnderecoDTO(
 
         @NotNull
         Integer numero
+
+
+
 ) {
+        public EnderecoDTO(EnderecoEntity dados){
+                this( dados.getLogradouro(),
+                 dados.getBairro(),
+                dados.getCep(),
+                dados.getCidade(),
+                dados.getUf(),
+                dados.getComplemento(),
+                dados.getNumero());
+
+        }
+
+
 }

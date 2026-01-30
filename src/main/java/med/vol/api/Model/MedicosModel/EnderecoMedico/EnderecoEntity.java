@@ -1,4 +1,4 @@
-package med.vol.api.Model.MedicosModel.EnderecoMedicoModel;
+package med.vol.api.Model.MedicosModel.EnderecoMedico;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -22,18 +22,17 @@ public class EnderecoEntity {
     private String complemento;
     private Integer numero;
 
+    public EnderecoEntity(EnderecoDTO enderecoDTO) {
+        this.logradouro = enderecoDTO.logradouro();
+        this.bairro = enderecoDTO.bairro();
+        this.cep = enderecoDTO.cep();
+        this.cidade = enderecoDTO.cidade();
+        this.uf = enderecoDTO.uf();
+        this.complemento =enderecoDTO.complemento();
+        this.numero = enderecoDTO.numero();
+    }
 
-public EnderecoEntity(EnderecoDTO dados){
-    this.logradouro = dados.logradouro();
-    this.bairro = dados.bairro();
-    this.cep = dados.cep();
-    this.cidade = dados.cidade();
-    this.uf = dados.uf();
-    this.complemento = dados.complemento();
-    this.numero = dados.numero();
-}
-
-public void atualizarInformacoes(EnderecoDTO dados){
+    public void atualizarInformacoes(EnderecoDTO dados){
     if(dados.logradouro() != null){
         this.logradouro = dados.logradouro();
     }

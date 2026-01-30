@@ -3,7 +3,6 @@ package med.vol.api.Model.MedicosModel.EnderecoPacientes;
 
 import jakarta.persistence.Embeddable;
 import lombok.*;
-import med.vol.api.Model.MedicosModel.EnderecoMedicoModel.EnderecoDTO;
 
 @AllArgsConstructor
 @NoArgsConstructor

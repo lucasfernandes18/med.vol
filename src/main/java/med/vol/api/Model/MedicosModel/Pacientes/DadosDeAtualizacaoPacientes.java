@@ -1,9 +1,6 @@
-package med.vol.api.Model.MedicosModel.PacientesModel;
+package med.vol.api.Model.MedicosModel.Pacientes;
 
 import jakarta.validation.constraints.NotNull;
-import med.vol.api.Model.MedicosModel.DadosDeAtualizacaoMedico;
-import med.vol.api.Model.MedicosModel.EnderecoMedicoModel.EnderecoDTO;
-import med.vol.api.Model.MedicosModel.EnderecoMedicoModel.EnderecoEntity;
 import med.vol.api.Model.MedicosModel.EnderecoPacientes.EnderecoPacientesDTO;
 
 public record DadosDeAtualizacaoPacientes(
