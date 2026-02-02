@@ -3,9 +3,10 @@ package med.vol.api.Controller;
 
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
+import med.vol.api.Model.MedicosModel.Medicos.DTOS.MedicosMapper;
 import med.vol.api.Model.MedicosModel.Medicos.DadosDeAtualizacaoMedico;
 import med.vol.api.Model.MedicosModel.Medicos.MedicoEntity;
-import med.vol.api.Model.MedicosModel.Medicos.MedicoListagem;
+import med.vol.api.Model.MedicosModel.Medicos.DTOS.MedicoListagem;
 import med.vol.api.Model.MedicosModel.Medicos.DTOS.MedicosDTO;
 import med.vol.api.Repository.MedicoRepository;
 import med.vol.api.Service.MedicoService;
@@ -30,7 +31,7 @@ private MedicoRepository medicoRepository;
     @Transactional //
      //@Valid se conecta com o bean validation e solicita as verificações desse dto.
 public ResponseEntity cadastrarMedicos(@RequestBody @Valid  MedicosDTO dados, UriComponentsBuilder uriBuilder){
-        var medico = new MedicoEntity();
+        MedicoEntity medico = new MedicosMapper().map(dados);
 
         medicoRepository.save(medico);
 
@@ -62,6 +63,12 @@ public ResponseEntity cadastrarMedicos(@RequestBody @Valid  MedicosDTO dados, Ur
         var medico = medicoRepository.getReferenceById(id);
         medicoService.desativar();
         return ResponseEntity.noContent().build();
+    }
+
+   @GetMapping("/{id}")
+    public ResponseEntity detalharMedico(@PathVariable Long id){
+        var medico = medicoRepository.getReferenceById(id);
+        return ResponseEntity.ok(new MedicoListagem(medico));
     }
 
 
