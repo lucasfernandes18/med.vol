@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import med.vol.api.Model.MedicosModel.Medicos.DadosDeAtualizacaoMedico;
 import med.vol.api.Model.MedicosModel.Medicos.MedicoEntity;
 import med.vol.api.Repository.MedicoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -16,6 +17,8 @@ import org.springframework.stereotype.Service;
 
 public class MedicoService {
 
+
+    @Autowired
     private MedicoRepository medicoRepository;
 
 
