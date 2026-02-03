@@ -5,7 +5,7 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
-import med.vol.api.Model.MedicosModel.EnderecoMedico.EnderecoDTO;
+import med.vol.api.Model.MedicosModel.Medicos.EnderecoMedico.EnderecoDTO;
 import med.vol.api.Model.MedicosModel.Medicos.Especialidades;
 import med.vol.api.Model.MedicosModel.Medicos.MedicoEntity;
 

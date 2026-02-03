@@ -2,10 +2,10 @@ package med.vol.api.Model.MedicosModel.Pacientes;
 
 
 import jakarta.persistence.*;
-import jakarta.validation.Valid;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
-import med.vol.api.Model.MedicosModel.EnderecoPacientes.EnderecoPacientesEntity;
+import med.vol.api.Model.MedicosModel.Pacientes.EnderecoPacientes.EnderecoPacientesEntity;
+import med.vol.api.Model.MedicosModel.Pacientes.DTOs.PacientesDTO;
 
 @Entity
 @Table(name = "pacientes")
@@ -32,30 +32,6 @@ public class PacientesEntity {
         this.endereco = new EnderecoPacientesEntity(dadosPacientes.endereco());
     }
 
-    
-
-    public void informacoesDeAtualizacao(@Valid DadosDeAtualizacaoPacientes atualizacaoPacientes) {
-       if (atualizacaoPacientes.nome() != null){
-           this.nome = atualizacaoPacientes.nome();
-       }
-        if (atualizacaoPacientes.email() != null){
-            this.email = atualizacaoPacientes.email();
-        }
-        if (atualizacaoPacientes.telefone() != null){
-            this.telefone = atualizacaoPacientes.telefone();
-        }
-        if (atualizacaoPacientes.atividade() != null){
-            this.atividade = atualizacaoPacientes.atividade();
-        }
-        if (atualizacaoPacientes.endereco() != null){
-            this.endereco.atualizacaoEnderecoPacientes(atualizacaoPacientes.endereco());
-        }
-
-    }
-
-    public void desativarPacientes(){
-       this.atividade = false;
-    }
 
 
 

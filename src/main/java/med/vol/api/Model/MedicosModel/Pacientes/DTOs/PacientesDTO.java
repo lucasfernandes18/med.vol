@@ -1,10 +1,10 @@
-package med.vol.api.Model.MedicosModel.Pacientes;
+package med.vol.api.Model.MedicosModel.Pacientes.DTOs;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import med.vol.api.Model.MedicosModel.EnderecoPacientes.EnderecoPacientesDTO;
+import med.vol.api.Model.MedicosModel.Pacientes.EnderecoPacientes.EnderecoPacientesDTO;
 
 public record PacientesDTO(
 

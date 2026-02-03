@@ -5,8 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import med.vol.api.Model.MedicosModel.EnderecoMedico.EnderecoDTO;
-import med.vol.api.Model.MedicosModel.EnderecoMedico.EnderecoEntity;
+import med.vol.api.Model.MedicosModel.Medicos.EnderecoMedico.EnderecoEntity;
 import med.vol.api.Model.MedicosModel.Medicos.DTOS.MedicosDTO;
 
 @Entity

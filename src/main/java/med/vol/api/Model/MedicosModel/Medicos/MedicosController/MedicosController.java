@@ -1,15 +1,15 @@
-package med.vol.api.Controller;
+package med.vol.api.Model.MedicosModel.Medicos.MedicosController;
 
 
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import med.vol.api.Model.MedicosModel.Medicos.DTOS.MedicosMapper;
-import med.vol.api.Model.MedicosModel.Medicos.DadosDeAtualizacaoMedico;
+import med.vol.api.Model.MedicosModel.Medicos.DTOS.DadosDeAtualizacaoMedico;
 import med.vol.api.Model.MedicosModel.Medicos.MedicoEntity;
 import med.vol.api.Model.MedicosModel.Medicos.DTOS.MedicoListagem;
 import med.vol.api.Model.MedicosModel.Medicos.DTOS.MedicosDTO;
-import med.vol.api.Repository.MedicoRepository;
-import med.vol.api.Service.MedicoService;
+import med.vol.api.Model.MedicosModel.Medicos.MedicosRepository.MedicoRepository;
+import med.vol.api.Model.MedicosModel.Medicos.MedicoService.MedicoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

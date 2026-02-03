@@ -1,7 +1,4 @@
-package med.vol.api.Model.MedicosModel.EnderecoMedico;
-
-import med.vol.api.Model.MedicosModel.Medicos.DTOS.MedicosDTO;
-import med.vol.api.Model.MedicosModel.Medicos.MedicoEntity;
+package med.vol.api.Model.MedicosModel.Medicos.EnderecoMedico;
 
 public class EnderecoMapper {
 

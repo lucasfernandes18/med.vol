@@ -1,4 +1,4 @@
-package med.vol.api.Repository;
+package med.vol.api.Model.MedicosModel.Medicos.MedicosRepository;
 
 import med.vol.api.Model.MedicosModel.Medicos.MedicoEntity;
 import org.springframework.data.domain.Page;
