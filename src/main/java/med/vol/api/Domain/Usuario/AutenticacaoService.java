@@ -9,11 +9,14 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class AutenticacaoService implements UserDetailsService {
+    //Interface implementada do springSecurity
 
     @Autowired
     private UsuarioRepository usuarioRepository;
 
 
+
+    //faz a consulta se o usuário existe no banco de dados
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return usuarioRepository.findByLogin(username);
