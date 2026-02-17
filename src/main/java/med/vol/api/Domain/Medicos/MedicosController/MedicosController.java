@@ -43,6 +43,8 @@ public ResponseEntity cadastrarMedicos(@RequestBody @Valid  MedicosDTO dados, Ur
    //Pega apenas as informações especificadas no trelo usando um dto.
     @GetMapping
     public ResponseEntity<Page<MedicoListagem>> listarMedicos(Pageable paginacao) {
+
+
          var page = medicoRepository.findAllByAtivoTrue(paginacao).map(MedicoListagem::new);
          return ResponseEntity.ok(page);
     }
