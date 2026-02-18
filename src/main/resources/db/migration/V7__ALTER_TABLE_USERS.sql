@@ -1,0 +1,2 @@
+ALTER TABLE usuarios
+    ADD COLUMN role TEXT NOT NULL;

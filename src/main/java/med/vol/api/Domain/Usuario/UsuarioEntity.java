@@ -27,6 +27,7 @@ public class UsuarioEntity implements UserDetails {
 
     private String login;
     private String senha;
+    private RoleUsuarios role;
 
 
     @Override
