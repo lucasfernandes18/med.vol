@@ -1,0 +1,2 @@
+ALTER TABLE usuarios
+    RENAME COLUMN usuario TO login;

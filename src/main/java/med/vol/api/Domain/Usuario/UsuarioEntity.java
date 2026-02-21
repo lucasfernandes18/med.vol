@@ -15,7 +15,7 @@ import java.util.Collection;
 import java.util.List;
 
 @Entity
-@Table(name = "usuario")
+@Table(name = "usuarios")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -27,12 +27,23 @@ public class UsuarioEntity implements UserDetails {
 
     private String login;
     private String senha;
+
+
     private RoleUsuarios role;
+
+    public UsuarioEntity(String login, String senha, RoleUsuarios role) {
+        this.login = login;
+        this.senha = senha;
+        this.role = role;
+    }
 
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority("ROLE_USUARIO"));
+        if (role == RoleUsuarios.ADMIN) {
+            return List.of(new SimpleGrantedAuthority("ROLE_ADMIN"), new SimpleGrantedAuthority("ROLE_USER"));
+        }
+        else return List.of(new SimpleGrantedAuthority("ROLE_USER"));
     }
 
     @Override
