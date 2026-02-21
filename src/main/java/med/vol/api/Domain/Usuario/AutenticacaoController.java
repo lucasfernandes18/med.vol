@@ -2,17 +2,16 @@ package med.vol.api.Domain.Usuario;
 
 import jakarta.validation.Valid;
 import med.vol.api.Infra.security.TokenService;
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.UUID;
-
 @RestController
-@RequestMapping("/login")
+@RequestMapping("auth")
 public class AutenticacaoController {
 
     @Autowired
@@ -21,13 +20,28 @@ public class AutenticacaoController {
     @Autowired
     private TokenService tokenService;
 
-    @PostMapping
+    @Autowired
+    private UsuarioRepository usuarioRepository;
+
+    @PostMapping("/login")
     public ResponseEntity efetirarLogin(@RequestBody @Valid DadosDeAutenticacao dados){
         var authenticationToken = new UsernamePasswordAuthenticationToken(dados.login(), dados.senha());
-        var authentication = manager.authenticate(authenticationToken);
+        var authentication = this.manager.authenticate(authenticationToken);
         var tokenJWT = tokenService.generateToken((UsuarioEntity)  authentication.getPrincipal());
 
-        return ResponseEntity.ok(new DadosTokenJWT(tokenJWT));
+        return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/register")
+    public ResponseEntity registrarUsuario (@RequestBody @Valid RegistroUsuarioDTO dados){
+        if(this.usuarioRepository.findByLogin(dados.login()) != null) return ResponseEntity.badRequest().build();
+
+        String encriptedPassword = new BCryptPasswordEncoder().encode(dados.senha());
+        UsuarioEntity newUser = new UsuarioEntity(dados.login(), encriptedPassword, dados.role());
+
+        this.usuarioRepository.save(newUser);
+
+        return ResponseEntity.ok().build();
     }
 
 
