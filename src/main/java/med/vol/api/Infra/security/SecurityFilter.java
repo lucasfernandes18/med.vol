@@ -10,6 +10,7 @@ import med.vol.api.Domain.Usuario.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -30,10 +31,10 @@ private UsuarioRepository usuarioRepository;
       var tokenJwt = recuperarToken(request);
       if  (tokenJwt != null) {
           var subject = tokenService.getSubject(tokenJwt);
-          var usuario = usuarioRepository.findByLogin(subject);
+          UserDetails usuario = usuarioRepository.findByLogin(subject);
 
-          SecurityContextHolder.getContext().setAuthentication(new UsernamePasswordAuthenticationToken(usuario, null, usuario.getAuthorities()));
-
+          var authentication = new UsernamePasswordAuthenticationToken(usuario, null, usuario.getAuthorities());
+          SecurityContextHolder.getContext().setAuthentication(authentication);
       }
 
         // indica para que a aplicação continue após chegar na camada de filtros

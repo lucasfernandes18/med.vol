@@ -15,9 +15,6 @@ public class AutenticacaoService implements UserDetailsService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
-
 
 
     //faz a consulta se o usuário existe no banco de dados
