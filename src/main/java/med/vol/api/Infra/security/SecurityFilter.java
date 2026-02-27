@@ -30,8 +30,8 @@ private UsuarioRepository usuarioRepository;
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
       var tokenJwt = recuperarToken(request);
       if  (tokenJwt != null) {
-          var subject = tokenService.getSubject(tokenJwt);
-          UserDetails usuario = usuarioRepository.findByLogin(subject);
+          var login = tokenService.ValidateToken(tokenJwt);
+          UserDetails usuario = usuarioRepository.findByLogin(login);
 
           var authentication = new UsernamePasswordAuthenticationToken(usuario, null, usuario.getAuthorities());
           SecurityContextHolder.getContext().setAuthentication(authentication);
@@ -44,10 +44,8 @@ private UsuarioRepository usuarioRepository;
 
     private String recuperarToken(HttpServletRequest request) {
         var authorizationHeader = request.getHeader("Authorization");
-        if (authorizationHeader != null ) {
-            return authorizationHeader.replace("Bearer ", "");
-        }
+        if (authorizationHeader == null ) return null;
         //replace remove o prefixo do retorno do token
-         return null;
+        return authorizationHeader.replace("Bearer ", "");
     }
 }

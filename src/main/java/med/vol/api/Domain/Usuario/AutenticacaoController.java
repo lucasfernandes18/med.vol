@@ -2,6 +2,7 @@ package med.vol.api.Domain.Usuario;
 
 import jakarta.validation.Valid;
 import med.vol.api.Domain.Usuario.DTOS.DadosDeAutenticacaoDTO;
+import med.vol.api.Domain.Usuario.DTOS.DadosTokenJWT;
 import med.vol.api.Domain.Usuario.DTOS.RegistroUsuarioDTO;
 import med.vol.api.Infra.security.TokenService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,10 +29,11 @@ public class AutenticacaoController {
     public ResponseEntity efetirarLogin(@RequestBody @Valid DadosDeAutenticacaoDTO dados){
 
         var usernamePassword = new UsernamePasswordAuthenticationToken(dados.login(), dados.senha());
-        var authentication = this.manager.authenticate(usernamePassword);
+        var auth = this.manager.authenticate(usernamePassword);
+        var token = tokenService.generateToken((UsuarioEntity) auth.getPrincipal());
 
 
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(new DadosTokenJWT(token));
     }
 
     @PostMapping("/register")

@@ -25,11 +25,12 @@ public class TokenService {
     public String generateToken(UsuarioEntity usuario){
         try {
             Algorithm algorithm = Algorithm.HMAC256(secret);
-            return JWT.create()
+            String token =  JWT.create()
                     .withIssuer("API Voll.med")
                     .withSubject(usuario.getLogin())
                     .withExpiresAt(dataExpiracao())
                     .sign(algorithm);
+            return token;
         } catch (JWTCreationException exception){
             throw new RuntimeException("erro ao gerar token", exception);
         }
@@ -37,7 +38,7 @@ public class TokenService {
     }
 
     //validação
-    public String getSubject(String tokenJWT){
+    public String ValidateToken(String tokenJWT){
         try {
             Algorithm algorithm = Algorithm.HMAC256(secret);
            return JWT.require(algorithm)
